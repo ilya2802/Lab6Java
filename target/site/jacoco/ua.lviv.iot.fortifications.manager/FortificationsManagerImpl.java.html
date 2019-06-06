@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="uk"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FortificationsManagerImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Fortifications</a> &gt; <a href="index.source.html" class="el_package">ua.lviv.iot.fortifications.manager</a> &gt; <span class="el_source">FortificationsManagerImpl.java</span></div><h1>FortificationsManagerImpl.java</h1><pre class="source lang-java linenums">package ua.lviv.iot.fortifications.manager;
+
+import ua.lviv.iot.fortifications.models.Fortifications;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class FortificationsManagerImpl implements FortificationManager {
+
+    private List&lt;Fortifications&gt; fortifications; // створюється новий список
+
+    public void setFortifications(final List&lt;Fortifications&gt; fortifications) { // функція
+<span class="nc" id="L15">        this.fortifications = fortifications; // вказівник на список в 12 рядку</span>
+<span class="nc" id="L16">    }</span>
+
+    public FortificationsManagerImpl(
+<span class="fc" id="L19">            final List&lt;Fortifications&gt; fortifications) {</span>
+<span class="fc" id="L20">        this.fortifications = fortifications;</span>
+<span class="fc" id="L21">    }</span>
+
+    @Override// вказує на те що ми хочемо перевизначити метод базового класу
+    public List&lt;Fortifications&gt; findItemsByTime(final double timeToBuild) {
+<span class="fc" id="L25">        List&lt;Fortifications&gt; result = new ArrayList&lt;&gt;(); // це список який дуже похожий на масив але має цілий ряд методів</span>
+<span class="fc" id="L26">        fortifications.stream().filter(fortifications1 -&gt;// один з методів .stream().filter приймає лямда вираз відомий як предикат.</span>
+                // Фільтр () є проміжною операцією, яка зчитує дані з потоку і повертає новий потік
+<span class="fc bfc" id="L28" title="All 2 branches covered.">                fortifications1.getTimeToBuild()// отримується кількість часу</span>
+<span class="fc" id="L29">                == timeToBuild).forEach(fortifications1 -&gt;// For each використовується для того щоб перебрати елементи масива або колекції</span>
+                //лямда ділить функію на дві частини скорочений запис функції
+<span class="fc" id="L31">                result.add(fortifications1));</span>
+<span class="fc" id="L32">        return result; // повертає результат</span>
+    }
+
+    @Override
+    public List&lt;Fortifications&gt; findItemsByLength(final double lenght) {
+<span class="fc" id="L37">        List&lt;Fortifications&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L38">        fortifications.stream().filter(fortifications1 -&gt;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">                fortifications1.getLenght()</span>
+<span class="fc" id="L40">                == lenght).forEach(fortifications1 -&gt; // Лямда</span>
+<span class="fc" id="L41">                result.add(fortifications1));// в лист додаються відфільтровані значення</span>
+<span class="fc" id="L42">        return result;</span>
+    }
+
+    @Override
+    public List&lt;Fortifications&gt; sortByDepth(final List&lt;Fortifications&gt; fortifications,
+                            final boolean reverse) {
+
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (reverse) {</span>
+<span class="fc" id="L50">            Collections.sort(fortifications, Comparator.</span>
+<span class="fc" id="L51">                    comparing(Fortifications::getDepth).</span>
+<span class="fc" id="L52">                    reversed());</span>
+        } else {
+<span class="fc" id="L54">            Collections.sort(fortifications, Comparator.</span>
+<span class="fc" id="L55">                    comparing(Fortifications::getDepth));</span>
+        }
+
+<span class="fc" id="L58">        return fortifications;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

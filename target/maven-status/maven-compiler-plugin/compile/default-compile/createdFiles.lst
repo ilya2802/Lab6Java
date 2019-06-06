@@ -1,0 +1,12 @@
+ua/lviv/iot/fortifications/models/CoveringType.class
+ua/lviv/iot/fortifications/models/Escarpment.class
+ua/lviv/iot/fortifications/manager/FortificationManager.class
+ua/lviv/iot/fortifications/models/Fortifications.class
+ua/lviv/iot/fortifications/models/MaterialType.class
+ua/lviv/iot/fortifications/models/AntitankNadovb.class
+ua/lviv/iot/fortifications/models/Aperal.class
+ua/lviv/iot/fortifications/models/Blindage$MyClass.class
+ua/lviv/iot/fortifications/models/Blindage.class
+ua/lviv/iot/fortifications/manager/FortificationsManagerImpl.class
+ua/lviv/iot/fortifications/models/Trench.class
+ua/lviv/iot/fortifications/manager/Writer.class
